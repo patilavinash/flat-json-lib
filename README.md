@@ -25,7 +25,7 @@ The library stops reading from the System.in once you type ENTER (\n) without an
 <pre>
 The library in general follows DFS based approach to flatten the nested json structure. <br />  
 Once the valid json is read from System.in , start with empty path list  <br /> 
- 1 .For each of the json children
+  For each of the json children
  	Add the current Key to the path
 		Check if the Json Value is a another Json container or terminal node, 
 		  If it is terminal then add it to the output object with key as all the elements from the path list seen till now
