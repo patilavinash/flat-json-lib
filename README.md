@@ -1,4 +1,4 @@
-# flat-json-lib
+# json-flat
 <pre>
 The repository contains
 /src -source code for the json-flat library
