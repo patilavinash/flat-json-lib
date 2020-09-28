@@ -11,7 +11,7 @@ Navigate into the /release folder through commandline and you can execute the li
 1. Running with | ( unix pipe) 
 ```
 cat ../sample.json | ./json-flat.sh 
-./json-flat.sh <<< "{\"a":true}"
+./json-flat.sh <<< "{\"a\":true}"
 ```
 2. Running via Interactive
 
