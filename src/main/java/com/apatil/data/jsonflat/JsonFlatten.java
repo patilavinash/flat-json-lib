@@ -33,7 +33,7 @@ public class JsonFlatten {
         this.delimiter = delimiter;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         if (args == null || args.length == 0) {
             throw new IllegalArgumentException("Please pass atleast 1 json string as argument");
@@ -41,10 +41,9 @@ public class JsonFlatten {
 
         String input = args[0];
         JsonNode flattenJson = new JsonFlatten().flattenJson(input);
-        System.out.println(flattenJson);
-
+        System.out.println( flattenJson.toString() );        
     }
-
+    
     public JsonNode flattenJson(final String json) {
 
         if (json == null || json.isEmpty()) {
