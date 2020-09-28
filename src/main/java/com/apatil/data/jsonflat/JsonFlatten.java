@@ -41,9 +41,9 @@ public class JsonFlatten {
 
         String input = args[0];
         JsonNode flattenJson = new JsonFlatten().flattenJson(input);
-        System.out.println( flattenJson.toString() );        
+        System.out.println(flattenJson.toString());
     }
-    
+
     public JsonNode flattenJson(final String json) {
 
         if (json == null || json.isEmpty()) {
@@ -65,16 +65,16 @@ public class JsonFlatten {
         return output;
     }
 
-    private void traverseJson(final JsonNode node,final List<String> currentPath,final ObjectNode output) {
+    private void traverseJson(final JsonNode node, final List<String> currentPath, final ObjectNode output) {
 
-        Iterator<Map.Entry<String, JsonNode>> fieldsIterator = node.fields();
-        while (fieldsIterator.hasNext()) {
-            Map.Entry<String, JsonNode> field = fieldsIterator.next();
-            final String key = field.getKey();
-            final JsonNode value = field.getValue();
+        Iterator<Map.Entry<String, JsonNode>> children = node.fields();
+        while (children.hasNext()) {
+            Map.Entry<String, JsonNode> currNode = children.next();
+            final String key = currNode.getKey();
+            final JsonNode value = currNode.getValue();
             currentPath.add(key);
-            if (value.isContainerNode() && !value.isEmpty(null)) {
-                    traverseJson(value, currentPath, output);
+            if (value.isContainerNode() && !value.isEmpty(null)) { // check for empty json objects {}
+                traverseJson(value, currentPath, output);
             } else {
                 output.set(getCurrentKeyPath(currentPath), value);
             }
