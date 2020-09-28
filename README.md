@@ -10,8 +10,8 @@ The repository contains
 Navigate into the /release folder through commandline and you can execute the library in <b>one</b> of the following ways
 1. Running with | ( unix pipe) 
 ```
-echo ../sample.json | ./json-flat.sh 
-./json-flat.sh <<< "{"a" , true}"
+cat ../sample.json | ./json-flat.sh 
+./json-flat.sh <<< "{\"a":true}"
 ```
 2. Running via Interactive
 
