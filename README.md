@@ -8,14 +8,15 @@ The repository contains
 # How to run
 
 Navigate into the /release folder through command-line and you can execute the library in <b>one</b> of the following ways
-1. Running with | ( Unix pipe) 
+1. Running with Unix System.in
 ```
 cat ../sample.json | ./json-flat.sh 
+```
 OR
+```
 ./json-flat.sh <<< "{\"a\":true}"
 ```
 2. Running via Interactive
-
 ```
 java -jar ./json-flat-1.0-jar-with-dependencies.jar
 ```
