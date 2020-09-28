@@ -19,7 +19,7 @@ java -jar ./json-flat-1.0-jar-with-dependencies.jar
 ```
 The library stops reading from the System.in once you type ENTER (\n) without any text and outputs the json
 
-# How its implemented
+# Implementaion
 
 <pre>
 The library in general follows DFS based approach to flatten the nested json structure. <br />  
