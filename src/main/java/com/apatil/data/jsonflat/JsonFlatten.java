@@ -9,11 +9,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -35,11 +37,25 @@ public class JsonFlatten {
 
     public static void main(String[] args) {
 
-        if (args == null || args.length == 0) {
-            throw new IllegalArgumentException("Please pass atleast 1 json string as argument");
+//        if (args == null || args.length == 0) {
+//            throw new IllegalArgumentException("Please pass atleast 1 json string as argument");
+//        }
+        StringBuilder inputBuilder = new StringBuilder();
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNextLine()) {
+            String next = scanner.nextLine();
+            inputBuilder.append(next);
+            if (next.isEmpty()) {
+                break;
+            }
         }
 
-        String input = args[0];
+        //System.out.println(" in ->  " + inputBuilder.toString());
+        String input = inputBuilder.toString();
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Please pass atleast 1 json string as input");
+        }
         JsonNode flattenJson = new JsonFlatten().flattenJson(input);
         System.out.println(flattenJson.toString());
     }

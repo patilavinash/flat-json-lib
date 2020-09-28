@@ -90,7 +90,7 @@ public class TestJsonFlatten {
         Assert.assertEquals(expectedMessage,message);
     }
     
-    @Test
+    //@Test
     public void testNoInputException(){
         
         
