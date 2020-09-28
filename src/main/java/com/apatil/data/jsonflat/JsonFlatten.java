@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mongo.data.jsonflat;
+package com.apatil.data.jsonflat;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,7 +45,7 @@ public class JsonFlatten {
 
     }
 
-    public JsonNode flattenJson(String json) {
+    public JsonNode flattenJson(final String json) {
 
         if (json == null || json.isEmpty()) {
             throw new IllegalArgumentException("Input string cannot be empty or null");
@@ -66,7 +66,7 @@ public class JsonFlatten {
         return output;
     }
 
-    private void traverseJson(final JsonNode node, List<String> currentPath, ObjectNode output) {
+    private void traverseJson(final JsonNode node,final List<String> currentPath,final ObjectNode output) {
 
         Iterator<Map.Entry<String, JsonNode>> fieldsIterator = node.fields();
         while (fieldsIterator.hasNext()) {
@@ -74,12 +74,8 @@ public class JsonFlatten {
             final String key = field.getKey();
             final JsonNode value = field.getValue();
             currentPath.add(key);
-            if (value.isContainerNode()) {                
-                if (value.isEmpty(null) ) {                    
-                    output.set(getCurrentKeyPath(currentPath), value);
-                } else {
-                    traverseJson(value, currentPath, output);                    
-                }
+            if (value.isContainerNode() && !value.isEmpty(null)) {
+                    traverseJson(value, currentPath, output);
             } else {
                 output.set(getCurrentKeyPath(currentPath), value);
             }
@@ -87,7 +83,7 @@ public class JsonFlatten {
         }
     }
 
-    private String getCurrentKeyPath(List<String> currentKeyPath) {
+    private String getCurrentKeyPath(final List<String> currentKeyPath) {
         return String.join(delimiter, currentKeyPath);
     }
 

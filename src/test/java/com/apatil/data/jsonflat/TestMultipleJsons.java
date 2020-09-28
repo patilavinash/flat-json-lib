@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.mongo.data.jsonflat;
+package com.apatil.data.jsonflat;
 
+import com.apatil.data.jsonflat.JsonFlatten;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import org.junit.Test;
@@ -15,7 +16,7 @@ import org.junit.runners.Parameterized.Parameters;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.Assert;
-import static org.mongo.data.jsonflat.JsonFlatten.MAPPER;
+import static com.apatil.data.jsonflat.JsonFlatten.MAPPER;
  
 
 /**
