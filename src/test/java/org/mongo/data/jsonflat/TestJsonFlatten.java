@@ -40,12 +40,12 @@ public class TestJsonFlatten {
     @Test
     public void testSimpleJson(){
         String json = "{\n"
-                + "    \"a\": 1,\n"
+                + "    \"a\": {},\n"
                 + "    \"b\": true\n"
                 + "}";
         
         ObjectNode output = new ObjectNode(JsonNodeFactory.instance);
-        output.put("a", 1);
+        output.put("a", new  ObjectNode(JsonNodeFactory.instance));
         output.put("b", true);
         
         Assert.assertEquals(output, new JsonFlatten().flattenJson(json));        
@@ -66,7 +66,6 @@ public class TestJsonFlatten {
                 + "}";
         
         
-        System.out.println(json);
         
         ObjectNode output = new ObjectNode(JsonNodeFactory.instance);
         output.put("a.a.a.a.a", "multi-level");

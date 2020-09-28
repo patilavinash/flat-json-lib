@@ -8,7 +8,6 @@ package org.mongo.data.jsonflat;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -30,7 +29,11 @@ public class TestMultipleJsons {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 { "{\"key\":\"value\"}", "{\"key\":\"value\"}" } ,
-                { "{\"a\": { \"a\":  {	\"a\": { \"a\": { \"a\": \"multi-level\"}}}}}" , "{\"a.a.a.a.a\":\"multi-level\"}" }
+                { "{\"a\": { \"a\":  {	\"a\": { \"a\": { \"a\": \"multi-level\"}}}}}" , "{\"a.a.a.a.a\":\"multi-level\"}" },
+                { "{\"a\": { \"a\":  {	\"a\": { \"a\": { \"a\": \"multi-level\"}}}}}" , "{\"a.a.a.a.a\":\"multi-level\"}" },
+                { "{\"a\": { \"b\" : { \"a\" :\"abc\"} } , \"b\" : { \"a\" :  { \"a\" :\"abc\"} }  } " , "{\"a.b.a\" : \"abc\" ,\"b.a.a\" : \"abc\" }" },                
+                { "{\"a\": { \"b\" : { } }, \"b\" : { \"a\" :  { \"a\" :\"abc\"} }  } " , "{\"a.b\" : {} ,\"b.a.a\" : \"abc\" }" },
+                { "{}" , "{}" }
         });
     }
     private final String input;

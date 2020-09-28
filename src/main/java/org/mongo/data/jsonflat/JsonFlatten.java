@@ -74,17 +74,21 @@ public class JsonFlatten {
             final String key = field.getKey();
             final JsonNode value = field.getValue();
             currentPath.add(key);
-            if (value.isContainerNode()) {
-                traverseJson(value, currentPath, output);
+            if (value.isContainerNode()) {                
+                if (value.isEmpty(null) ) {                    
+                    output.set(getCurrentKeyPath(currentPath), value);
+                } else {
+                    traverseJson(value, currentPath, output);                    
+                }
             } else {
                 output.set(getCurrentKeyPath(currentPath), value);
             }
-            currentPath.remove(key);
+            currentPath.remove(currentPath.size() - 1);
         }
     }
 
     private String getCurrentKeyPath(List<String> currentKeyPath) {
-        return String.join(delimiter, currentKeyPath).trim();
+        return String.join(delimiter, currentKeyPath);
     }
 
 }
