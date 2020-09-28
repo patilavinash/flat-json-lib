@@ -90,19 +90,6 @@ public class TestJsonFlatten {
         Assert.assertEquals(expectedMessage,message);
     }
     
-    //@Test
-    public void testNoInputException(){
-        
-        
-        Exception exception = Assert.assertThrows(RuntimeException.class, () -> {
-              JsonFlatten.main(null);
-        });
-        
-        String expectedMessage = "Please pass atleast 1 json string as argument";
-        String message = exception.getMessage();
-        
-        Assert.assertEquals(expectedMessage,message);
-    }
     
     @Test
     public void testInvalidJsonException(){

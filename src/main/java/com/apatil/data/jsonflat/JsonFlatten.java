@@ -54,10 +54,9 @@ public class JsonFlatten {
         //System.out.println(" in ->  " + inputBuilder.toString());
         String input = inputBuilder.toString();
         if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("Please pass atleast 1 json string as input");
+            throw new IllegalArgumentException("Please pass valid json as input");
         }
         JsonNode flattenJson = new JsonFlatten().flattenJson(input);
-        System.out.println("flattened json:");
         System.out.println(flattenJson.toString());
     }
 
